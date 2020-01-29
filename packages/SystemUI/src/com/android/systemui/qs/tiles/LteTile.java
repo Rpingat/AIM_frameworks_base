@@ -20,11 +20,18 @@ import android.content.Context;
 import android.content.Intent;
 import android.provider.Settings;
 import android.service.quicksettings.Tile;
+<<<<<<< HEAD
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.content.ComponentName;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.RILConstants;
+=======
+import android.telephony.TelephonyManager;
+import android.content.ComponentName;
+import com.android.internal.telephony.DcParamObject;
+import com.android.internal.telephony.Phone;
+>>>>>>> 3d7312fec3beaeed2e27784d4b2034f8298a309b
 import android.telephony.SubscriptionManager;
 import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.PhoneFactory;
@@ -92,6 +99,7 @@ public class LteTile extends QSTileImpl<BooleanState> {
         state.icon = mIcon;
 
         switch (getCurrentPreferredNetworkMode()) {
+<<<<<<< HEAD
             case RILConstants.NETWORK_MODE_GLOBAL:
             case RILConstants.NETWORK_MODE_LTE_CDMA_EVDO:
             case RILConstants.NETWORK_MODE_LTE_GSM_WCDMA:
@@ -103,6 +111,16 @@ public class LteTile extends QSTileImpl<BooleanState> {
             case RILConstants.NETWORK_MODE_LTE_TDSCDMA_GSM:
             case RILConstants.NETWORK_MODE_LTE_TDSCDMA:
             case RILConstants.NETWORK_MODE_LTE_TDSCDMA_CDMA_EVDO_GSM_WCDMA:
+=======
+            case Phone.NT_MODE_GLOBAL:
+            case Phone.NT_MODE_LTE_CDMA_AND_EVDO:
+            case Phone.NT_MODE_LTE_GSM_WCDMA:
+            case Phone.NT_MODE_LTE_ONLY:
+            case Phone.NT_MODE_LTE_WCDMA:
+            case Phone.NT_MODE_LTE_CDMA_EVDO_GSM_WCDMA:
+            case Phone.NT_MODE_LTE_TDSCDMA_GSM_WCDMA:
+            case Phone.NT_MODE_LTE_TDSCDMA_WCDMA:
+>>>>>>> 3d7312fec3beaeed2e27784d4b2034f8298a309b
                 state.slash.isSlashed = false;
                 state.label = mContext.getString(R.string.lte_on);
                 state.state = Tile.STATE_ACTIVE;
@@ -122,9 +140,15 @@ public class LteTile extends QSTileImpl<BooleanState> {
     }
 
     private int getCurrentPreferredNetworkMode() {
+<<<<<<< HEAD
         final int subId = SubscriptionManager.getDefaultDataSubscriptionId();
         return Settings.Global.getInt(mContext.getContentResolver(),
                 Settings.Global.PREFERRED_NETWORK_MODE + subId, -1);
+=======
+        int subid = 1;
+        return Settings.Global.getInt(mContext.getContentResolver(),
+                Settings.Global.PREFERRED_NETWORK_MODE + subid, -1);
+>>>>>>> 3d7312fec3beaeed2e27784d4b2034f8298a309b
     }
 }
 
